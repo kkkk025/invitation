@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>محمد & زهرة | Invitation</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Great+Vibes&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+}
+
+body{
+  font-family:"Aref Ruqaa",serif;
+  color:#5b4030;
+  overflow-x:hidden;
+  background:#eadcc7;
+}
+
+.page{
+  min-height:100dvh;
+  position:relative;
+  overflow:hidden;
+  background:
+  radial-gradient(
+    circle at 50% 10%,
+    #fffaf0 0,
+    #f2e4cf 45%,
+    #d6b995 100%
+  );
+}
+
+/* =========================
+   STARS
+========================= */
+
+#stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.star{
+  position:absolute;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#b99568;
+  opacity:0;
+  animation:
+  twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle{
+
+  0%,100%{
+    opacity:0;
+    transform:scale(.3);
+  }
+
+  50%{
+    opacity:.65;
+    transform:scale(1);
+  }
+
+}
+
+/* =========================
+   SCENE
+========================= */
+
+.scene{
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  position:relative;
+  z-index:1;
+  padding:30px 0;
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope{
+  width:min(88vw,430px);
+  height:270px;
+  position:relative;
+  cursor:pointer;
+  filter:
+  drop-shadow(
+    0 22px 30px #59402d38
+  );
+  transition:
+  1.1s cubic-bezier(.2,.8,.2,1);
+}
+
+.env{
+  position:absolute;
+  inset:0;
+  border-radius:10px;
+  background:#e5c99d;
+  border:
+  1px solid
+  #b9976d;
+}
+
+.flap{
+  position:absolute;
+  z-index:4;
+  left:0;
+  top:0;
+  width:0;
+  height:0;
+  border-left:
+  215px solid transparent;
+  border-right:
+  215px solid transparent;
+  border-top:
+  150px solid #d4b17d;
+  transform-origin:top;
+  transition:1.2s;
+}
+
+.left,
+.right{
+  position:absolute;
+  z-index:3;
+  bottom:0;
+  width:0;
+  height:0;
+  border-style:solid;
+}
+
+.left{
+  left:0;
+  border-width:
+  0
+  0
+  270px
+  215px;
+  border-color:
+  transparent
+  transparent
+  #ddbf90
+  transparent;
+}
+
+.right{
+  right:0;
+  border-width:
+  270px
+  0
+  0
+  215px;
+  border-color:
+  transparent
+  transparent
+  transparent
+  #d0ae79;
+}
+
+.bottom{
+  position:absolute;
+  z-index:3;
+  bottom:0;
+  left:0;
+  border-style:solid;
+  border-width:
+  0
+  215px
+  130px
+  215px;
+  border-color:
+  transparent
+  transparent
+  #e8cca0
+  transparent;
+}
+
+/* =========================
+   SEAL
+========================= */
+
+.seal{
+  position:absolute;
+  z-index:6;
+  left:50%;
+  top:52%;
+  transform:
+  translate(-50%,-50%);
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#925f49;
+  color:#fff3df;
+  font-size:20px;
+  box-shadow:
+  0 7px 16px #59351e44;
+  transition:.5s;
+}
+
+.hint{
+  position:absolute;
+  top:calc(100% + 20px);
+  width:100%;
+  text-align:center;
+  font-size:15px;
+  color:#765b42;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.open .flap{
+  transform:
+  rotateX(180deg);
+  z-index:1;
+}
+
+.open .seal{
+  opacity:0;
+  transform:
+  translate(-50%,-50%)
+  scale(.3);
+}
+
+.open{
+  transform:
+  translateY(80px)
+  scale(.65);
+  opacity:0;
+  pointer-events:none;
+}
+
+/* =========================
+   INVITATION CARD
+========================= */
+
+.card{
+  position:relative;
+  z-index:5;
+  width:min(92vw,540px);
+  padding:
+  32px
+  28px
+  34px;
+  text-align:center;
+  background:#fffaf0ed;
+  border:
+  1px solid
+  #c8a77999;
+  border-radius:26px;
+  box-shadow:
+  0 25px 70px #51351f42;
+  opacity:0;
+  transform:
+  translateY(40px)
+  scale(.95);
+  pointer-events:none;
+  transition:
+  1.1s cubic-bezier(.2,.8,.2,1);
+}
+
+.card.show{
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+}
+
+/* =========================
+   BISMILLAH
+========================= */
+
+.bismillah{
+  font-family:"Aref Ruqaa",serif;
+  font-size:24px;
+  line-height:1.8;
+  color:#6b4a35;
+  margin:0 auto 4px;
+}
+
+/* =========================
+   QURAN VERSE
+========================= */
+
+.verse{
+  font-family:
+  "Aref Ruqaa",
+  serif;
+  font-size:20px;
+  line-height:2;
+  color:#76533d;
+  margin:
+  18px
+  auto
+  8px;
+  max-width:470px;
+}
+
+/* =========================
+   TOP DECORATION
+========================= */
+
+.ornament{
+  font-family:
+  "Cormorant Garamond",
+  serif;
+  font-size:29px;
+  letter-spacing:8px;
+  color:#ae8760;
+  margin-bottom:3px;
+}
+
+.invited{
+  font-family:
+  "Cormorant Garamond",
+  serif;
+  font-style:italic;
+  letter-spacing:3px;
+  font-size:14px;
+  color:#987553;
+}
+/* =========================
+   NAMES
+========================= */
+
+.names{
+  font-family:
+  "Aref Ruqaa",
+  serif;
+  font-size:52px;
+  font-weight:700;
+  font-style:italic;
+  line-height:1.2;
+  color:#684630;
+  margin:
+  8px
+  0
+  5px;
+  text-shadow:
+  1px 1px 0 #fff;
+}
+
+.amp{
+  font-family:
+  "Great Vibes",
+  cursive;
+  font-size:39px;
+  font-style:normal;
+  color:#a27750;
+  margin:
+  0
+  7px;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  justify-content:center;
+  margin:
+  18px
+  auto;
+}
+
+.divider i{
+  width:70px;
+  height:1px;
+  background:#c7a77b;
+}
+
+.diamond{
+  width:7px;
+  height:7px;
+  background:#a47b56;
+  transform:
+  rotate(45deg);
+}
+
+/* =========================
+   DATE
+========================= */
+
+.eventDate{
+  font-family:
+  "Aref Ruqaa";
+  font-size:29px;
+  font-style:italic;
+  color:#6b4a35;
+}
+
+.time{
+  font-family:
+  "Cormorant Garamond";
+  font-size:21px;
+  font-style:italic;
+  color:#86664b;
+  margin-top:2px;
+}
+
+/* =========================
+   PLACE
+========================= */
+
+.place{
+  font-size:18px;
+  line-height:1.9;
+  margin:
+  18px
+  0
+  23px;
+  color:#674e3b;
+}
+
+/* =========================
+   MAP BUTTON
+========================= */
+
+.map{
+  display:inline-block;
+  text-decoration:none;
+  color:#fff;
+  background:#76513a;
+  padding:
+  10px
+  25px;
+  border-radius:30px;
+  font-size:15px;
+  box-shadow:
+  0 8px 18px #5d3e2a33;
+  transition:.25s;
+}
+
+.map:hover{
+  transform:
+  translateY(-2px);
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music{
+  position:fixed;
+  z-index:20;
+  top:18px;
+  left:18px;
+  width:45px;
+  height:45px;
+  border:
+  1px solid
+  #b99568aa;
+  border-radius:50%;
+  background:#fff8ebd9;
+  color:#694a32;
+  font-size:18px;
+  display:none;
+}
+
+/* =========================
+   FLOATING TEXT
+========================= */
+
+.riseText{
+  position:fixed;
+  z-index:3;
+  font-family:
+  "Aref Ruqaa";
+  font-style:italic;
+  color:#a27a56;
+  opacity:0;
+  pointer-events:none;
+  animation:
+  riseText 5s ease-out forwards;
+}
+
+@keyframes riseText{
+
+  0%{
+    opacity:0;
+    transform:
+    translateY(50px)
+    rotate(-5deg);
+  }
+
+  25%{
+    opacity:.55;
+  }
+
+  100%{
+    opacity:0;
+    transform:
+    translateY(-90vh)
+    rotate(8deg);
+  }
+
+}
+
+/* =========================
+   FLOWERS
+========================= */
+
+.flower{
+  position:fixed;
+  z-index:4;
+  font-size:32px;
+  opacity:0;
+  pointer-events:none;
+  animation:
+  bloom 5s ease-out forwards;
+}
+
+@keyframes bloom{
+
+  0%{
+    opacity:0;
+    transform:
+    translate(0,80px)
+    rotate(-25deg)
+    scale(.2);
+  }
+
+  20%{
+    opacity:.75;
+  }
+
+  100%{
+    opacity:0;
+    transform:
+    translate(var(--x),-100vh)
+    rotate(360deg)
+    scale(1);
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+  .bismillah{
+    font-size:21px;
+  }
+
+  .flap{
+    border-left-width:44vw;
+    border-right-width:44vw;
+    border-top-width:135px;
+  }
+
+  .left{
+    border-width:
+    0
+    0
+    270px
+    44vw;
+  }
+
+  .right{
+    border-width:
+    270px
+    0
+    0
+    44vw;
+  }
+
+  .bottom{
+    border-width:
+    0
+    44vw
+    130px
+    44vw;
+  }
+
+  .names{
+    font-size:43px;
+  }
+
+  .verse{
+    font-size:17px;
+    line-height:2.1;
+  }
+
+  .card{
+    padding:
+    28px
+    20px
+    32px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<div id="stars"></div>
+
+<div class="scene">
+
+<!-- =========================
+     ENVELOPE
+========================= -->
+
+<div class="envelope" id="envelope">
+
+  <div class="env"></div>
+
+  <div class="flap"></div>
+
+  <div class="left"></div>
+
+  <div class="right"></div>
+
+  <div class="bottom"></div>
+
+  <div class="seal">
+    م ♥ ز
+  </div>
+
+  <div class="hint">
+    اضغط لفتح الدعوة
+  </div>
+
+</div>
+
+
+<!-- =========================
+     INVITATION
+========================= -->
+
+<section class="card" id="card">
+
+<div class="bismillah">
+بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ
+</div>
+
+<div class="verse">
+
+وَمِنْ آَيَاتِهِ أَنْ خَلَقَ لَكُمْ
+مِنْ أَنْفُسِكُمْ أَزْوَاجًا
+لِتَسْكُنُوا إِلَيْهَا
+وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً
+
+</div>
+
+<div class="ornament">
+❦ ✦ ❦
+</div>
+
+<div class="invited">
+YOU ARE INVITED
+</div>
+
+<!-- الأسماء -->
+
+<div class="names">
+
+محمد
+
+<span class="amp">
+&amp;
+</span>
+
+زهرة
+
+</div>
+
+<div class="divider">
+
+<i></i>
+
+<span class="diamond"></span>
+
+<i></i>
+
+</div>
+
+<!-- التاريخ -->
+
+<div class="eventDate">
+
+٢ أكتوبر ٢٠٢٦
+
+</div>
+
+<!-- الوقت -->
+
+<div class="time">
+
+3:00 PM
+
+</div>
+
+<!-- المكان -->
+
+<div class="place">
+
+قاعة مون بلازا
+
+<br>
+
+كورنيش المعادي
+
+</div>
+
+<a
+class="map"
+target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Moon+Plaza+Hall+Maadi+Cairo">
+
+📍 فتح الموقع على الخريطة
+
+</a>
+
+</section>
+
+</div>
+
+<!-- زر الموسيقى -->
+
+<button
+class="music"
+id="music">
+
+♫
+
+</button>
+
+</div>
+
+<script>
+
+/* =========================
+   MUSIC
+========================= */
+
+let audio;
+let master;
+let timer;
+
+/* =========================
+   STARS
+========================= */
+
+function addDecor(){
+
+  for(let i=0;i<35;i++){
+
+    let s=
+    document.createElement("span");
+
+    s.className="star";
+
+    s.style.left=
+    Math.random()*100+"%";
+
+    s.style.top=
+    Math.random()*100+"%";
+
+    s.style.animationDelay=
+    Math.random()*3+"s";
+
+    document
+    .getElementById("stars")
+    .appendChild(s);
+
+  }
+
+}
+
+/* =========================
+   HAPPY MUSIC
+========================= */
+
+function musicOn(){
+
+  if(audio)return;
+
+  audio=
+  new(
+    window.AudioContext ||
+    window.webkitAudioContext
+  )();
+
+  master=
+  audio.createGain();
+
+  master.gain.value=.045;
+
+  master.connect(
+    audio.destination
+  );
+
+  /* نغمة فرايحي خفيفة */
+
+  const notes=[
+
+    261.63, 329.63, 392.00, 523.25,
+    659.25, 523.25, 392.00, 329.63,
+
+    293.66, 349.23, 440.00, 587.33,
+    698.46, 587.33, 440.00, 349.23
+
+  ];
+
+  let i=0;
+
+  function play(){
+
+    let o=
+    audio.createOscillator();
+
+    let g=
+    audio.createGain();
+
+    o.type="sine";
+
+    o.frequency.value=
+    notes[
+      i++ %
+      notes.length
+    ];
+
+    g.gain.setValueAtTime(
+      0,
+      audio.currentTime
+    );
+
+    g.gain.linearRampToValueAtTime(
+      1,
+      audio.currentTime+.05
+    );
+
+    g.gain.exponentialRampToValueAtTime(
+      .001,
+      audio.currentTime+.55
+    );
+
+    o.connect(g);
+
+    g.connect(master);
+
+    o.start();
+
+    o.stop(
+      audio.currentTime+.57
+    );
+
+  }
+
+  play();
+
+  timer=
+  setInterval(
+    play,
+    480
+  );
+
+  music.style.display=
+  "block";
+
+}
+
+/* =========================
+   FLOATING EFFECTS
+========================= */
+
+function floating(){
+
+  const words=[
+
+    "محمد",
+    "زهرة",
+    "❦",
+    "مودة",
+    "محبة"
+
+  ];
+
+  for(let i=0;i<14;i++){
+
+    let t=
+    document.createElement("span");
+
+    t.className=
+    "riseText";
+
+    t.textContent=
+    words[
+      i%words.length
+    ];
+
+    t.style.left=
+    Math.random()*92+"%";
+
+    t.style.bottom=
+    "3%";
+
+    t.style.setProperty(
+      "--x",
+      (Math.random()*180-90)+"px"
+    );
+
+    t.style.animationDelay=
+    Math.random()*2+"s";
+
+    document.body
+    .appendChild(t);
+
+  }
+
+  for(let i=0;i<20;i++){
+
+    let f=
+    document.createElement("span");
+
+    f.className=
+    "flower";
+
+    f.textContent=
+    i%2
+    ?"❀"
+    :"✿";
+
+    f.style.left=
+    Math.random()*100+"%";
+
+    f.style.bottom=
+    "0";
+
+    f.style.setProperty(
+      "--x",
+      (Math.random()*220-110)+"px"
+    );
+
+    f.style.animationDelay=
+    Math.random()*2+"s";
+
+    document.body
+    .appendChild(f);
+
+  }
+
+}
+
+/* =========================
+   OPEN INVITATION
+========================= */
+
+addDecor();
+
+envelope.onclick=()=>{
+
+  envelope.classList.add(
+    "open"
+  );
+
+  setTimeout(
+    ()=>{
+
+      card.classList.add(
+        "show"
+      );
+
+    },
+    600
+  );
+
+  musicOn();
+
+  floating();
+
+};
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+music.onclick=()=>{
+
+  if(!audio)return;
+
+  if(master.gain.value>0){
+
+    master.gain.value=0;
+
+    music.textContent="🔇";
+
+  }
+
+  else{
+
+    master.gain.value=.045;
+
+    music.textContent="♫";
+
+  }
+
+};
+
+</script>
+
+</body>
+
+</html>
